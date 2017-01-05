@@ -1,0 +1,10 @@
+%h2 Edit Profile
+= simple_form_for(@user, url: edit_profile_path(@user), html: { method: :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :firstname, required: true, autofocus: true
+    = f.input :lastname, required: true, autofocus: true
+    = f.input :email, required: true, autofocus: true
+    = f.association :professions
+  .form-actions
+    = f.button :submit, "Update"

@@ -1,0 +1,22 @@
+= form_tag home_find_workers_path, method: :get do |f|
+  = select_tag :profession_ids, options_from_collection_for_select(Profession.all, :id, :name)
+  = submit_tag 'Search', class: 'btn'
+
+%h2.text-left Workers
+
+.table-responsive.clearfix
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th Firstname
+        %th Lastname
+        %th Emailw
+        %th Professions
+
+    %tbody
+      - @workers.each do |worker|
+        %tr
+          %td= worker.firstname
+          %td= worker.lastname
+          %td= worker.email
+          %td= worker.professions.pluck(:name).join(', ')

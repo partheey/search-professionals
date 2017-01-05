@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @profession_type.title
+
+= link_to 'Edit', edit_profession_type_path(@profession_type)
+\|
+= link_to 'Back', profession_types_path
