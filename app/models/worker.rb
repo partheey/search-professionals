@@ -5,5 +5,5 @@ class Worker < User
 
   validates :professions, presence: true, on: :update
 
-  scope :with_professions, -> (professions){joins(:professions).where(professions: {id: professions})}
+  scope :with_professions, -> (professions){joins(:professions).where(professions: {id: professions}).distinct}
 end

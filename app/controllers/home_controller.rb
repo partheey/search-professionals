@@ -11,7 +11,6 @@ class HomeController < ApplicationController
   end
 
   def update_profile
-    binding.pry
     @user = User.find(params[:id])
     @user.update(worker_params)
   end

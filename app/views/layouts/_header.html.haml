@@ -15,7 +15,7 @@
             %li.active
               %a{:href => "/"} Home
             %li
-              = link_to('Edit Profile', edit_profile_path(current_user), :method => :put)
+              = link_to('Edit Profile', edit_profile_path(current_user), :method => :get)
             %li
               = link_to('Search Workers', home_find_workers_path)
             %li
