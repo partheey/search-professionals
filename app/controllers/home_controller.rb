@@ -12,7 +12,12 @@ class HomeController < ApplicationController
 
   def update_profile
     @user = User.find(params[:id])
-    @user.update(worker_params)
+    if @user.update(worker_params)
+      flash[:success] = 'Your profile has been successfully updated !'
+      redirect_to edit_profile_path
+    else
+      render :edit_profile
+    end
   end
 
   private
@@ -22,6 +27,8 @@ class HomeController < ApplicationController
   end
 
   def worker_params
-    params.require(:worker).permit(:firstname, :lastname, :email, profession_ids: [])
+    return params.require(:worker).permit(:firstname, :lastname, :email, profession_ids: []) if params.include?(:worker)
+    return params.require(:customer).permit(:firstname, :lastname, :email, profession_ids: []) if params.include?(:customer)
+    return params.require(:admin).permit(:firstname, :lastname, :email, profession_ids: []) if params.include?(:admin)
   end
 end

@@ -5,5 +5,5 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :firstname, presence: true, length: {in: 2..100}
-  validates :firstname, length: {in: 2..100}
+  validates :lastname, length: {in: 2..100}
 end

@@ -1,0 +1,35 @@
+/ Possible flash message types:
+/ - success
+/ - error
+/ - warning
+/ - info
+
+- flash.to_a.to_h.each do |key, value|
+  - next if value.nil?
+  :ruby
+    case key
+      when "success"
+        style_class = "alert-success"
+        icon_class = "fa-check"
+      when "error", "alert"
+        style_class = "alert-danger"
+        icon_class = "fa-exclamation-triangle"
+      when "warning"
+        style_class = "alert-warning"
+        icon_class = "fa-exclamation-triangle"
+      when "info"
+        style_class = "alert-info"
+        icon_class = "fa-info-circle"
+      else
+        style_class = "alert-info"
+        icon_class = "fa-info-circle"
+    end
+
+  .alert.alert-block{class: style_class}
+    %button.close{"data-dismiss" => "alert"}
+      %i.ace-icon.fa.fa-times
+
+    %i.ace-icon.fa{class: icon_class}
+    = raw(value)
+
+- flash.clear
